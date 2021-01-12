@@ -1,0 +1,168 @@
+:root {
+  --primary-color: #71aaff;
+  --label-font-color: #797878;
+  --utility-color: #ccc9c9;
+}
+
+.cardContainer {
+  height: 17rem;
+  position: relative;
+  max-width: 75vw;
+  margin: 0 auto 4rem auto;
+
+  box-shadow: 0px 1px 0.1px 0.5px rgba(0, 0, 0, 0.1),
+    0px -0.1px 0.1px 0.5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.cardContainer::before {
+  content: "";
+  background-color: var(--primary-color);
+  position: absolute;
+  width: 0.5rem;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.cardContainer,
+.cardContainer::before {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.gridContainer {
+  /* border: 1px solid; */
+  height: 100%;
+  width: 100%;
+  margin: 0 0.35rem 0 0.85rem;
+  display: grid;
+  grid-template-columns: 0.75fr 2fr;
+}
+.clipImageContainer {
+  height: 17rem;
+  width: 2.5rem;
+  text-align: end;
+}
+
+.clipImageContainer img {
+  max-height: 100%;
+}
+
+.imagePositionAbsolute {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/*card's left grid styling, which is a container for children in flex display*/
+.uniqueInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-left: 1rem;
+
+  border-right: 1px solid var(--utility-color);
+}
+
+.uniqueInfo span.dataHasLabelPrimaryColor {
+  color: var(--label-font-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+.uniqueInfo h2,
+.ItemsFlexed {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.uniqueInfo img[alt~="account"] {
+  width: 1.25rem;
+}
+
+.uniqueInfo img[alt~="owner"] {
+  width: 1.85rem;
+}
+
+.uniqueInfo span#gender {
+  border-right: 1px solid var(--utility-color);
+  padding-right: 0.65rem;
+}
+.dataHasH2Color {
+}
+/*card's left grid styling, which is a container for
+children in grid display*/
+
+.otherInfo {
+  display: grid;
+  grid-template-columns: 1.15fr 1.65fr 1fr !important;
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+  padding: 1rem;
+  /* border: 1px solid; */
+}
+
+.otherInfo label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--label-font-color);
+  position: relative;
+  padding-block-end: 0.35rem;
+}
+
+.otherInfo .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.otherInfo .content label#beforeElementHasLowerWidthThanSiblings::before {
+  width: 13px;
+}
+
+.otherInfo .content span {
+  font-size: 1.045rem;
+  color: #010b56;
+  font-weight: 600;
+}
+.otherInfo .content:not(:last-child) span {
+  margin-bottom: 1.5rem !important;
+}
+
+/*stylng the data label, before element for purpose 
+of identifying label data own*/
+.otherInfo label::before {
+  content: "";
+  width: 25px;
+  height: 3.5px;
+  z-index: 99;
+  position: absolute;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+.otherInfo .content span#dataHasLowerFontSize {
+  font-size: 0.95em;
+}
+
+/*Media Queries for mobile adjustment*/
+
+@media (max-width: 56rem) {
+  .gridContainer,
+  .cardContainer {
+    height: auto;
+  }
+
+  .gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

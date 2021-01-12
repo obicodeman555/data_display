@@ -1,0 +1,39 @@
+.searchBoxContainer {
+  max-width: 55vw;
+  margin: 1.5rem auto;
+  height: auto;
+}
+.searchBoxInput {
+  /* border: 5px solid black; */
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 1rem;
+  display: inline-block;
+  text-align: start;
+  cursor: text;
+  font: 400 1.5rem;
+  vertical-align: middle;
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 0.45rem;
+  outline: none;
+  border: 2px solid transparent;
+  background-color: #e1e1e1;
+
+  transition: border 0.45s ease-in-out;
+  padding: 1.5rem 0.75rem;
+}
+
+.searchBoxInput:focus {
+  border: 2px solid #71aaff;
+  font-size: 1rem;
+  transition: all 0.45s ease-in-out;
+}
+
+.searchBoxInput::placeholder {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1rem;
+}
