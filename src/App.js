@@ -1,37 +1,72 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SearchBox from "./components/search-box/SearchBox";
 import CardList from "./components/card-list/CardList";
+import Pagination from "./components/pagination/Pagination";
 
-class App extends Component {
-  state = {
-    users: null,
-    searchField: "",
+function App() {
+  const [searchField, setSearchField] = useState("");
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [userDataPerPage] = useState(20);
+  const [btnCondition, setBtnCondition] = useState(null);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true);
+      const result = await axios.get(
+        "https://api.enye.tech/v1/challenge/records"
+      );
+      setUsers(result.data);
+      setLoading(false);
+    };
+    fetchUsers();
+  }, []);
+
+  //Get current users
+  const indexOfLastUserData = currentPage * userDataPerPage;
+  const indexOfFirstUserData = indexOfLastUserData - userDataPerPage;
+
+  const currentUserData = users?.records?.profiles?.slice(
+    indexOfFirstUserData,
+    indexOfLastUserData
+  );
+
+  // //filterData on search
+  const handleChange = (event) => setSearchField(event.target.value);
+
+  const searchedUsers = currentUserData?.filter(
+    (user) =>
+      user.FirstName.toLowerCase().includes(searchField.toLowerCase()) ||
+      user.LastName.toLowerCase().includes(searchField.toLowerCase()) ||
+      user.UserName.toLowerCase().includes(searchField.toLowerCase()) ||
+      user.CreditCardNumber.includes(searchField) ||
+      user.CreditCardType.toLowerCase().includes(searchField.toLowerCase()) ||
+      user.PaymentMethod.toLowerCase().includes(searchField.toLowerCase())
+  );
+
+  //change Page
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    setBtnCondition(pageNumber);
   };
-  componentDidMount() {
-    const url = "https://api.enye.tech/v1/challenge/records";
-    fetch(url)
-      .then((result) => result.json())
-      .then((result) => {
-        this.setState({ users: result });
-      });
-  }
 
-  handleChange = (event) => this.setState({ searchField: event.target.value });
-  render() {
-    const { users, searchField } = this.state;
-    const filteredUser = users?.records?.profiles.filter(
-      (profile) =>
-        profile.FirstName.toLowerCase().includes(searchField.toLowerCase()) ||
-        profile.CreditCardNumber.includes(searchField)
-    );
-    console.log(filteredUser);
-    return (
-      <div className="container">
-        <SearchBox placeholder="Search..." handleChange={this.handleChange} />
-        <CardList users={filteredUser} />
-      </div>
-    );
-  }
+  return (
+    <div className="container">
+      <SearchBox placeholder="Search..." handleChange={handleChange} />
+      <Pagination
+        userDataPerPage={userDataPerPage}
+        totalUsersData={users?.records?.profiles?.length}
+        paginate={paginate}
+        btnCondition={btnCondition}
+      />
+      <CardList
+        users={searchedUsers}
+        searchField={() => handleChange}
+        loading={loading}
+      />
+    </div>
+  );
 }
 
 export default App;
