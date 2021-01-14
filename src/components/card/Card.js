@@ -67,7 +67,7 @@ const Card = ({ user }) => (
         <aside>
           <div className="content">
             <label>Last Login</label>
-            <span>{user.LastLogin}</span>
+            <span id="loginDataHasLowerFontSize">{user.LastLogin}</span>
           </div>
           <div className="content">
             <label>Latitude</label>

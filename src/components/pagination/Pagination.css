@@ -47,3 +47,8 @@
   background-color: var(--primary-color);
   color: #fff;
 }
+
+.pgnum {
+  font-weight: 600;
+  color: var(--label-font-color);
+}

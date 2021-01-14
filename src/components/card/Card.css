@@ -41,18 +41,19 @@
   grid-template-columns: 0.75fr 2fr;
 }
 .clipImageContainer {
-  height: 17rem;
-  width: 2.5rem;
+  height: 18rem;
+  width: 1rem;
   text-align: end;
 }
 
 .clipImageContainer img {
-  max-height: 100%;
+  min-height: 100%;
+  width: 100%;
 }
 
 .imagePositionAbsolute {
   position: absolute;
-  right: 0;
+  right: -0.1rem;
   top: 0;
 }
 
@@ -78,6 +79,10 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.uniqueInfo h2 {
+  font-size: 1.5rem;
 }
 
 .uniqueInfo img[alt~="account"] {
@@ -147,8 +152,13 @@ of identifying label data own*/
   border-radius: 5px;
 }
 
+/*Micelleaneous adjusments**/
 .otherInfo .content span#dataHasLowerFontSize {
   font-size: 0.95em;
+}
+
+label span#loginDataHasLowerFontSize {
+  font-size: 0.25rem;
 }
 
 /*Media Queries for mobile adjustment*/

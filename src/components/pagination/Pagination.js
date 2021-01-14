@@ -16,7 +16,7 @@ function Pagination({
   return (
     <nav>
       <ul className="pageNumberContainer">
-        <div>Page Numbers:</div>
+        <div className="pgnum">Page Numbers:</div>
         {pageNumbers.map((number, index) => (
           <li key={index}>
             <a
