@@ -7,9 +7,9 @@ import accountPhone from "../../images/phone.png";
 import accountGender from "../../images/gender.png";
 
 const Card = ({ user }) => (
-  <div className="cardContainer">
-    <div className="gridContainer">
-      <div className="uniqueInfo">
+  <div className="cardContainer col-sm-12">
+    <div className="gridContainer col-sm-12">
+      <div className="uniqueInfo col-sm-12">
         <h2>
           <img src={accountIcon} alt="account owner icon" />
           <span>{user.FirstName}</span>
@@ -35,7 +35,7 @@ const Card = ({ user }) => (
           </span>
         </p>
       </div>
-      <div className="otherInfo">
+      <div className="otherInfo col-sm-12">
         <aside>
           <div className="content">
             <label>Payment Method</label>

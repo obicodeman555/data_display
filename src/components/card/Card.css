@@ -161,6 +161,18 @@ label span#loginDataHasLowerFontSize {
   font-size: 0.25rem;
 }
 
+/**** Loading custom spinner styles*****/
+.loading {
+  width: 10rem;
+  height: 10rem;
+  border: 3px solid rgba(189, 186, 186, 0.3);
+  margin: 5rem auto 0 auto;
+  border-radius: 50%;
+  border-top-color: #2b7de9;
+  animation: 1s loadingEffect infinite linear;
+  transition: border-top-color 1s infinite linear;
+}
+
 /*Media Queries for mobile adjustment*/
 
 @media (max-width: 56rem) {
@@ -172,5 +184,17 @@ label span#loginDataHasLowerFontSize {
   .gridContainer {
     display: flex;
     flex-wrap: wrap;
+  }
+}
+
+/***KeyFrames
+**Loading Spinner
+**/
+@keyframes loadingEffect {
+  from {
+    transform: rotate(0deg) scale(0.5);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -4,7 +4,7 @@ import "./CardList.css";
 
 const CardList = ({ users, loading }) => {
   if (loading) {
-    return <h2 className="loading">Loading...</h2>;
+    return <div className="loading"></div>;
   }
   return (
     <div className="cardListContainer">
